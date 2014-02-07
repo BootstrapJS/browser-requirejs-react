@@ -71,31 +71,23 @@ module.exports = function (grunt) {
             options: {
                 basePath: "src/",
                 mainConfigFile: "src/require.config.js",
-                dir: "build/requirejs/",
+                out: "build/requirejs/main.js",
                 optimize: "none",
                 generateSourceMaps: true,
-                wrap: {
-                    start: "(function() {",
-                    end: "}());"
-                },
                 /* Remove all jsx! loader calls from build */
                 onBuildWrite: function (moduleName, path, singleContents) {
                     return singleContents.replace(/('|")jsx!/g, '$1');
                 },
-                modules: [{
-                    name: "main",
-                    exclude: ["../../node_modules/almond/almond", "JSXTransformer", "jsx"],
-                    override: {
-                        // We use the wrapping technique here instead of `insertRequire`
-                        // as we need one initial sync `require` to make sure the library
-                        // is fully loaded once the file is completely processed.
-                        // `insertRequire` is async!
-                        wrap: {
-                            start: "(function() {\n" + fs.readFileSync("node_modules/almond/almond.js") + "\n",
-                            end: "require('main');\n" + "}());"
-                        }
-                    }
-                }]
+                exclude: ["../node_modules/almond/almond", "JSXTransformer", "jsx"],
+                // We use the wrapping technique here instead of `insertRequire`
+                // as we need one initial sync `require` to make sure the library
+                // is fully loaded once the file is completely processed.
+                // `insertRequire` is async!
+                wrap: {
+                    start: "(function() {\n" + fs.readFileSync("node_modules/almond/almond.js") + "\n",
+                    end: "require('main');\n" + "}());"
+                },
+                include: ["jsx!main"]
             }
         }
     });
