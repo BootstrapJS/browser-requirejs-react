@@ -1,0 +1,12 @@
+{
+  "name": "Jakobs JavaScript React Seed",
+  "version": "0.0.0",
+  "authors": [
+    "Jakob Westhoff <jakob@westhoffswelt.de>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "react": "~0.8.0"
+  }
+}
