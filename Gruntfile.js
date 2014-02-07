@@ -1,4 +1,5 @@
 /* globals module */
+var fs = require("fs");
 module.exports = function (grunt) {
     /**
      * Automatically load all Grunttasks, which follow the pattern `grunt-*`
@@ -28,7 +29,7 @@ module.exports = function (grunt) {
      */
     grunt.config("uglify", {
         options: {
-            report: "gzip",
+            report: "min",
             /** preserve special comments, which include licenses and stuff */
             preserveComments: "some",
             /** Write out source maps for each uglified target */
@@ -77,16 +78,20 @@ module.exports = function (grunt) {
                     start: "(function() {",
                     end: "}());"
                 },
+                /* Remove all jsx! loader calls from build */
+                onBuildWrite: function (moduleName, path, singleContents) {
+                    return singleContents.replace(/('|")jsx!/g, '$1');
+                },
                 modules: [{
                     name: "main",
-                    include: ["../../node_modules/almond/almond"],
+                    exclude: ["../../node_modules/almond/almond", "JSXTransformer", "jsx"],
                     override: {
                         // We use the wrapping technique here instead of `insertRequire`
                         // as we need one initial sync `require` to make sure the library
                         // is fully loaded once the file is completely processed.
                         // `insertRequire` is async!
                         wrap: {
-                            start: "(function() {",
+                            start: "(function() {\n" + fs.readFileSync("node_modules/almond/almond.js") + "\n",
                             end: "require('main');\n" + "}());"
                         }
                     }
@@ -210,7 +215,8 @@ module.exports = function (grunt) {
      */
     grunt.config("clean", {
         "build": ["!build/.gitignore", "build/**/*"],
-        "dist": ["!dist/.gitignore", "dist/**/*"]
+        "dist": ["!dist/.gitignore", "dist/**/*"],
+        "www": ["!www/.gitignore", "www/**/*"]
     });
 
     /**
