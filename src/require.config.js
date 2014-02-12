@@ -7,7 +7,7 @@ require.config({
         "jsx": "../vendor/require-jsx/jsx",
         "react": "../bower_components/react/react"
     },
-    "shims": {
+    "shim": {
 
     }
 });
