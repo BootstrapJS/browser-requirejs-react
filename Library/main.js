@@ -7,6 +7,6 @@ define([
     HelloMessage
 ) {
     /*jshint ignore:start*/
-    React.renderComponent(<HelloMessage name="John" />, document.getElementsByTagName("body")[0]);
+    React.renderComponent(<HelloMessage name="John Doe" />, document.getElementsByTagName("body")[0]);
     /*jshint ignore:end*/
 });
