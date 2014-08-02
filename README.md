@@ -1,13 +1,13 @@
-# Vanilla Browser JavaScript Project Seed
+# ReactJs Browser Project Seed
 
 This repository contains a basic project setup, which I use to quickly setup
-new prototype projects for myself. Maybe this templates do help others as
-well.
+new Reactjs projects for myself.
 
 ## Used Features
 
 The current seed utilizes the following features/projects:
 
+- [React](http://facebook.github.io/react/)
 - [Grunt](http://gruntjs.com)
 - [require.js](http://requirejs.org/)
 - [amdclean](http://gregfranko.com/amdclean/)
