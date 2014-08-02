@@ -13,11 +13,11 @@ module.exports = function(grunt, options) {
     grunt.registerTask("watch:test", ["karma:dev"]);
 
     // Run a karma test-server for everybody else to connect to
-    grunt.registerTask("test:server", ["lint", "karma:all-single"]);
+    grunt.registerTask("test:server", ["karma:all-single"]);
 
     // Run a karma test server for everybody to connect to, while watching
     // and auto-executing tests once files change
-    grunt.registerTask("watch:test:server", ["lint", "karma:all"]);
+    grunt.registerTask("watch:test:server", ["karma:all"]);
 
     return {
         tasks: {

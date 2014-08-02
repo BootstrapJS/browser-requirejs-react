@@ -5,7 +5,7 @@
  * from the src directory
  */
 require.config({
-    "baseUrl": "/base/src",
+    "baseUrl": "/base/Library",
 
     "paths": {
         /* Further test related path definitions */

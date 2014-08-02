@@ -19,6 +19,9 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
+            // Shims needed for react and phantomjs
+            paths.vendor("react-phantomjs-shims/function.bind.js"),
+
             // Requirejs configuration and test bootstrapping
             // Define before non included files to prioritize inclusion
             paths.source(parameters.requireJsConfigName),
@@ -30,6 +33,10 @@ module.exports = function (config) {
 
             // All application and library source files
             {pattern: paths.source("**/*.js"), included: false, served: true},
+            {pattern: paths.source("**/*.jsx"), included: false, served: true},
+            {pattern: paths.node("**/*"), included: false, served: true},
+            {pattern: paths.bower("**/*"), included: false, served: true},
+            {pattern: paths.vendor("**/*"), included: false, served: true},
             
             // All Test specs
             {pattern: paths.specs("**/*.spec.js"), included: false, served: true}

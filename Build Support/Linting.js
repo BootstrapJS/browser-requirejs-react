@@ -20,7 +20,8 @@ module.exports = function(grunt, options) {
                     "karma.conf.js",
                     "Build Support/**/*.js",
                     paths.specs("**/*" + parameters.specificationSuffix),
-                    paths.source("**/*.js")
+                    paths.source("**/*.js"),
+                    paths.source("**/*.jsx")
                 ]
             }
         }

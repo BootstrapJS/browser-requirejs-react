@@ -4,7 +4,7 @@
  *
  * - Rules should not be changed if there isn't a very good reason for it.
  * - The code should be changed to adhere to the rules instead.
- * - Always prefer to disable certain warnings for specific code paths using 
+ * - Always prefer to disable certain warnings for specific code paths using
  *   annotation comments to changing a rule all together here.
  */
 {
@@ -15,9 +15,9 @@
     "eqeqeq":       true,
     "forin":        true,
     "immed":        true,
-    "newcap":       true,
+    "newcap":       false,
     "noarg":        true,
-    "noempty":      true,
+    "noempty":      false,
     "nomen":        false,
     "onevar":       false,
     "plusplus":     false,

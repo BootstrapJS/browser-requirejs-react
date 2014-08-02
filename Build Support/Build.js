@@ -16,12 +16,20 @@ module.exports = function (grunt, options) {
                 all: {
                     options: {
                         basePath: paths.source(),
-                        mainConfigFile: paths.source(parameters.requireJsConfigName),
+                        mainConfigFile: [
+                            paths.source(parameters.requireJsConfigName),
+                            paths.source(parameters.requireJsBuildConfigName),
+                        ],
                         dir: paths.build("requirejs"),
                         optimize: "none",
                         generateSourceMaps: true,
+                        /* Remove all jsx! loader calls from build */
+                        onBuildWrite: function (moduleName, path, singleContents) {
+                            return singleContents.replace(/('|")jsx!/g, '$1');
+                        },
                         modules: [{
-                            name: parameters.entryPoint
+                            name: parameters.entryPoint,
+                            exclude: ["JSXTransformer", "jsx", "text"]
                         }],
                         // Run amdclean on the build result
                         onModuleBundleComplete: cleaner.createOnModuleBundleComplete(parameters, paths)

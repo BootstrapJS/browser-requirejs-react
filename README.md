@@ -33,6 +33,9 @@ required:
 The following basic rules apply during development:
 
 - JavaScript sourcecode is stored under `Library`
+- All files containing *jsx* need to be suffixed with `.jsx`. They need to be 
+  loaded as a dependency within requirejs using the `jsx!` loader 
+  (eg. `jsx!Components/SomeComponent`)
 - All other *web* content (html, css, images, ...) is stored under `Assets`
 - `grunt symlink:www` takes care of creating a `Public` directory which contains
   all the needed file structures linked for dynamic loading during development
@@ -47,6 +50,9 @@ The following basic rules apply during development:
       application
 - `Library/require.config.js` handles all the *require.js* configuration for
   development and production builds
+- `Library/require.config.build.js` allows certain aspects of the configuration
+  to be specifically overwritten for builds. Like for example using a preminified
+  React.js version.
 - Tests are stored under `Specifications`
     - They are named `*.spec.js`
     - The used framework is Jasmine

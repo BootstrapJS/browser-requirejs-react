@@ -71,7 +71,7 @@ module.exports = function(grunt, options) {
                 all: {
                     options: {
                         port: parameters.devServer.port,
-                        base: __dirname + "/" + parameters.devServer.documentRoot
+                        base: __dirname + "/../" + parameters.devServer.documentRoot
                     }
                 }
             }

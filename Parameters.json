@@ -3,6 +3,7 @@
     "exportEntryPoint": false,
     "specificationSuffix": ".spec.js",
     "requireJsConfigName": "require.config.js",
+    "requireJsBuildConfigName": "require.config.build.js",
     "devServer": {
         "port": 8000,
         "documentRoot": "Public"
