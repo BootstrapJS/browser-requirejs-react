@@ -26,7 +26,7 @@ module.exports = function(grunt, options) {
                     jshintrc: pkg.jshintConfig || "jshint.json"
                 },
                 all: [
-                    "Gruntfile.js",
+                   "Gruntfile.js",
                     "karma.conf.js",
                     "Build Support/**/*.js",
                     paths.specs("**/*" + parameters.specificationSuffix),
